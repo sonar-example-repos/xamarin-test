@@ -22,6 +22,11 @@ namespace AwesomeApp
         {
             count++;
             ((Button)sender).Text = $"You clicked {count} times.";
+
+            if (count < 0)
+            {
+            throw new ArgumentException("Bad argument", "someParameter");  // Noncompliant
+            }    
         }
     }
 }
