@@ -18,7 +18,7 @@ steps:
 
 - task: NuGetCommand@2
   inputs:
-    restoreSolution: '**/*.sln -MSBuildVersion 16.11'
+    restoreSolution: 'AwesomeApp.sln -MSBuildVersion 16.11'
 
 
 - task: XamarinAndroid@1
