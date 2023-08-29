@@ -20,14 +20,16 @@ steps:
   inputs:
     restoreSolution: 'AwesomeApp.sln -MSBuildVersion 16.11'
 
-- task: NuGetCommand@2
+# - task: XamarinAndroid@1
+#   inputs:
+#     projectFile: '**/*droid*.csproj'
+#     outputDirectory: '$(outputDirectory)'
+#     configuration: '$(buildConfiguration)'
+#     msbuildArguments: '/t:Restore'
+#     msbuildVersionOption: '16.0'
+- task: XamariniOS@2
   inputs:
-    command: 'restore'
-    restoreSolution: '**/AwesomeApp.Android.csproj'
-
-- task: XamarinAndroid@1
-  inputs:
-    projectFile: '**/*droid*.csproj'
-    outputDirectory: '$(outputDirectory)'
+    solutionFile: '**/*iOS.csproj'
     configuration: '$(buildConfiguration)'
-    msbuildArguments: '/t:Restore'
+    packageApp: false
+    buildForSimulator: true
