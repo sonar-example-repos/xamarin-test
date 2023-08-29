@@ -20,9 +20,9 @@ steps:
   inputs:
     restoreSolution: 'AwesomeApp.sln -MSBuildVersion 16.11'
 
-
 - task: XamarinAndroid@1
   inputs:
     projectFile: '**/*droid*.csproj'
     outputDirectory: '$(outputDirectory)'
     configuration: '$(buildConfiguration)'
+    msbuildArguments: '/t:Restore'
