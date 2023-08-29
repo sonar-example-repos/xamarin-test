@@ -1,3 +1,5 @@
+See https://learn.microsoft.com/en-us/azure/devops/pipelines/ecosystems/xamarin?view=azure-devops&tabs=yaml
+
 ---
 name: 'Xamarin.Forms - Get Started: First app with Xamarin.Forms'
 description: "Sample code for the get started page that shows how to build a basic Xamarin.Forms app (get started)"
