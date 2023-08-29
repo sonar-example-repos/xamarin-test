@@ -14,11 +14,22 @@ jobs:
     outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
 
   steps:
+  - checkout: self
+    fetchDepth: 0
   - task: NuGetToolInstaller@1
 
   - task: NuGetCommand@2
     inputs:
       restoreSolution: '**/*.sln'
+
+  - task: SonarQubePrepare@5
+    inputs:
+      SonarQube: 'ee99'
+      scannerMode: 'MSBuild'
+      projectKey: 'xamarin-test_xamarin-test_AYpC_o0QJqbUlZqIasPy'
+      projectName: 'xamarin-test'
+      extraProperties: |
+        sonar.verbose=true
 
   - task: XamarinAndroid@1
     inputs:
@@ -26,6 +37,14 @@ jobs:
       outputDirectory: '$(outputDirectory)'
       configuration: '$(buildConfiguration)'
       msbuildVersionOption: '16.0'
+
+  - task: SonarQubeAnalyze@5
+    inputs:
+      jdkversion: 'JAVA_HOME_11_X64'
+
+  - task: SonarQubePublish@5
+    inputs:
+      pollingTimeoutSec: '300'
 
   - task: AndroidSigning@3
     inputs:
